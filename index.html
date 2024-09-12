@@ -7,8 +7,19 @@
     <script src="1-map.js" defer></script>
     <script src="2-dice.js" defer></script>
     <script src="3-birthday.js" defer></script>
+    <script src="4-timer.js" defer></script>
 </head>
 <body>
-    
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;"><br/>
+        <h4>До Нового года осталось</h4>
+        <div style="display: flex; justify-content: center; gap: 10px; width: 100%;">
+            <span id="month"></span>
+            <span id="day"></span>
+            <span id="hours"></span>
+            <span id="minutes"></span>
+            <span id="seconds"></span>
+        </div>
+        <div id="newYear"></div>
+    </div>
 </body>
 </html>
