@@ -8,6 +8,6 @@ const diceRundom = (dice) => {
 };
 
 
-console.log(diceRundom('d4'));
-console.log(diceRundom('d10'));
-console.log(diceRundom('d20'));
+// console.log(diceRundom('d4'));
+// console.log(diceRundom('d10'));
+// console.log(diceRundom('d20'));
