@@ -1,22 +1,38 @@
-function req() {
-  const request = new XMLHttpRequest();
-  request.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto");
-  request.send();
+function jsonParse(response) {
+  try {
+    return JSON.parse(response);
+  } catch (e) {
+    console.error(e);
+  }
+}
 
-  request.addEventListener("load", function () {
-    const { abilities } = JSON.parse(this.responseText);
-    const {ability} = abilities[0]
+function getPokemon() {
+  const xhr = new XMLHttpRequest();
 
+  xhr.open("GET", "https://pokeapi.co/api/v2/pokemon/ditto");
+  xhr.send();
 
-    const request = new XMLHttpRequest();
-    request.open("GET", ability.url);
-    request.send();
-
-    request.addEventListener("load", function () {
-      const data = JSON.parse(this.responseText);
-      console.log(data);
-    });
+  xhr.addEventListener("load", function () {
+    const json = jsonParse(this.responseText);
+    const { abilities } = json;
+    const { ability } = abilities[0];
+    getEffect(ability.url);
   });
 }
 
-// req();
+function getEffect(url) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open("GET", url);
+  xhr.send();
+
+  xhr.addEventListener("load", function () {
+    const { effect_entries } = jsonParse(this.responseText);
+    const { effect } = effect_entries.find(
+      ({ language }) => language.name === "en"
+    );
+    console.log(effect);
+  });
+}
+
+// getPokemon();
