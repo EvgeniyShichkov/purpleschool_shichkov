@@ -5,4 +5,4 @@ import User from './user.js';
 const user = new User(Task);
 const task = new Task('писать код')
 
-// user.do(task.run())
+user.do(task.run())
