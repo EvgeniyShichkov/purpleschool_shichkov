@@ -30,12 +30,12 @@ const renderError = (error) => {
   `;
 };
 
-getCurrentLocation()
-  .then((position) => {
-    if (!locationContainer) return;
-    locationContainer.innerHTML = renderSuccess(position);
-  })
-  .catch((err) => {
-    if (!locationContainer) return;
-    locationContainer.innerHTML = renderError(err);
-  });
+// getCurrentLocation()
+//   .then((position) => {
+//     if (!locationContainer) return;
+//     locationContainer.innerHTML = renderSuccess(position);
+//   })
+//   .catch((err) => {
+//     if (!locationContainer) return;
+//     locationContainer.innerHTML = renderError(err);
+//   });
