@@ -1,3 +1,6 @@
 export default class Task {
-   static run = () => console.log("писать код")
+   constructor(message) {
+      this.message = message ?? 'дефолтное значение';
+   }
+   run = () => console.log(this.message)
 }

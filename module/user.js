@@ -3,5 +3,5 @@ export default class User {
         this.task = task
     }
 
-    do = () => this.task.run()
+    do = () => this.task
 } 
