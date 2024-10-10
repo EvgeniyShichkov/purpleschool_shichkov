@@ -3,4 +3,6 @@ import User from './user.js';
 
 
 const user = new User(Task);
-user.do()
+const task = new Task('писать код')
+
+// user.do(task.run())
