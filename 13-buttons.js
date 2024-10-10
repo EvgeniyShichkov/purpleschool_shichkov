@@ -1,34 +1,57 @@
-const div = document.getElementById("container");
+const elements = {
+  buttons: document.querySelector('.wrapper__buttons'),
+  count: document.querySelector('.wrapper__count'),
+  reset: document.querySelector('.button__reset'),
+};
 
-let clickCount = 0;
+// по клику на ресет сбросили название всех кнопок и убрали стили
+elements.reset.addEventListener('click', (e) => {
+  elements.count.innerHTML = 0;
+  [...elements.buttons.children].forEach(button => {
+    button.innerText = 'Нажми меня';
+    button.classList.remove('-active-')
+  });
+})
 
-const h3 = document.createElement("h3");
-h3.innerHTML = `Счетчик: ${clickCount}`;
-div.appendChild(h3);
-
-for (let i = 1; i <= 5; i++) {
-  const btn = document.createElement("button");
-  btn.innerHTML = "Нажми на меня";
-  btn.setAttribute("data-test-id", i);
-  div.appendChild(btn);
-}
-
-const buttons = document.querySelectorAll("button");
-
-let lastClickedButton = null;
-function setCounter(button) {
-  clickCount++;
-  h3.innerHTML = `Счетчик: ${clickCount}`;
-  if (lastClickedButton && lastClickedButton !== button) {
-    lastClickedButton.innerHTML = "Нажми на меня";
+elements.buttons.addEventListener('click', (event) => {
+  if(event.target.tagName !== 'BUTTON'){
+    return;
   }
-  button.innerText = "Кнопка нажата";
-  lastClickedButton = button;
+  const currentCount = Number(elements.count.innerHTML);
+  [...elements.buttons.children].forEach((button) => {
+    if (button === event.target) {
+      if (!button.classList.contains('-active-')) {
+          elements.count.innerHTML = currentCount + 1;
+      }
+
+      button.innerHTML = 'Нажата!';
+      button.classList.add('-active-');
+  } else {
+      button.innerHTML = 'Нажми меня';
+      button.classList.remove('-active-');
+  }
+
+  })
+})
+
+
+const appendButton = (count, wrapper = elements.buttons, classList = []) => {
+  if(!classList.length){
+    classList = ['button', 'wrapper__button'];
+  }
+  for(let i = 0; i < count; i++){
+    const btn = document.createElement('button');
+    btn.classList.add(...classList);
+    btn.innerText = 'Нажми меня'
+    wrapper.append(btn);
+  }
 }
 
-
-buttons.forEach((button) => {
-  button.addEventListener("click", () =>  setCounter(button));
+document.addEventListener('mouseover', (e) => {
+  if (e.target.tagName === 'BUTTON') e.target.classList.toggle('-focus-');
+});
+document.addEventListener('mouseout', (e) => {
+  if (e.target.tagName === 'BUTTON') e.target.classList.toggle('-focus-');
 });
 
-
+appendButton(5, elements.buttons);

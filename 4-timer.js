@@ -10,20 +10,20 @@ const getTime = () => {
   return { month, day, hours, minutes, seconds };
 };
 
-const interal = setInterval(() => {
-  const {month, day, hours, minutes, seconds} = getTime()
+// const interal = setInterval(() => {
+//   const {month, day, hours, minutes, seconds} = getTime()
 
-  document.getElementById('month').textContent = `${month ?? '-'} Месяца,`; 
-  document.getElementById('day').textContent = `${day ?? '-'} Дней,`;
-  document.getElementById('hours').textContent = `${hours ?? '-'} Часов,`;
-  document.getElementById('minutes').textContent = `${minutes ?? '-'} Минут,`;
-  document.getElementById('seconds').textContent = `${seconds ?? '-'} Секунд`; 
+//   document.getElementById('month').textContent = `${month ?? '-'} Месяца,`; 
+//   document.getElementById('day').textContent = `${day ?? '-'} Дней,`;
+//   document.getElementById('hours').textContent = `${hours ?? '-'} Часов,`;
+//   document.getElementById('minutes').textContent = `${minutes ?? '-'} Минут,`;
+//   document.getElementById('seconds').textContent = `${seconds ?? '-'} Секунд`; 
 
-  if(month == 0 && day == 0 && hours == 0 && minutes == 0 && seconds == 0){
-    clearInterval(interal);
-    document.getElementById('newYear').textContent = 'С Новым Годом!!!'
-  }
-},1000)
+//   if(month == 0 && day == 0 && hours == 0 && minutes == 0 && seconds == 0){
+//     clearInterval(interal);
+//     document.getElementById('newYear').textContent = 'С Новым Годом!!!'
+//   }
+// },1000)
 
 
 
